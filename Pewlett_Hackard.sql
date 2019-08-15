@@ -11,7 +11,7 @@ select * from departments;
 --Department Manager Table
 CREATE TABLE dept_manager (
 	dept_no character varying NOT NULL, 
-	emp_no INT NOT NULL,
+	emp_no character varying NOT NULL,
 	from_date timestamp without time zone NOT NULL,
 	to_date timestamp without time zone NOT NULL
 );
@@ -74,14 +74,31 @@ FROM employees
 WHERE hire_date = '1985-%-%';
 
 
+--List the manager of each department with the following information: 
+--department number, department name, the manager's employee number, 
+--last name, first name, and start and end employment dates.
+
+select d.dept_no, d.dept_name, m.emp_no, m.to_date, e.hire_date, e.last_name, e.first_name
+from departments as d
+join dept_manager as m
+on d.dept_no = m.dept_no
+join employees as e 
+on e.emp_no = m.emp_no;
 
 
+--List the department of each employee with the following information: 
+--employee number, last name, first name, and department name.
 
+select e.first_name, e.last_name, e.emp_no, dept_emp.dept_no, d.dept_name
+from departments as d
+join dept_emp 
+on d.dept_no = dept_emp.dept_no
+join employees as e 
+on dept_emp.emp_no = e.emp_no;
 
-
-
-
-
+--List all employees whose first name is 
+--"Hercules" and last names begin with "B."
+select * from employees;
 
 
 
