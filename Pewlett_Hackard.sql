@@ -71,7 +71,7 @@ select * from employees;
 
 SELECT first_name, last_name
 FROM employees
-WHERE hire_date = '1985-%-%';
+WHERE hire_date like 1985;
 
 
 --List the manager of each department with the following information: 
