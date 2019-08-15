@@ -106,9 +106,32 @@ where first_name = 'Hercules' and last_name like 'B%';
 --including their employee number, last name, first name, 
 --and department name.
 
+select e.first_name, e.last_name, e.emp_no, dept_emp.dept_no, d.dept_name
+from departments as d
+join dept_emp 
+on d.dept_no = dept_emp.dept_no
+join employees as e 
+on dept_emp.emp_no = e.emp_no
+where d.dept_name = 'Sales';
 
+--List all employees in the Sales and Development departments, 
+--including their employee number, last name, first name, and department name.
 
+select e.first_name, e.last_name, e.emp_no, dept_emp.dept_no, d.dept_name
+from departments as d
+join dept_emp 
+on d.dept_no = dept_emp.dept_no
+join employees as e 
+on dept_emp.emp_no = e.emp_no
+where d.dept_name in ('Sales','Development');
 
+--In descending order, list the frequency count of employee last names, 
+--i.e., how many employees share each last name.
+
+select last_name, count(last_name) as "name_count"
+from employees
+group by last_name
+order by "name_count" desc;
 
 
 
