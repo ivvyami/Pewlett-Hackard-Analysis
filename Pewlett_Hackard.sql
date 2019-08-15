@@ -98,7 +98,14 @@ on dept_emp.emp_no = e.emp_no;
 
 --List all employees whose first name is 
 --"Hercules" and last names begin with "B."
-select * from employees;
+select first_name, last_name
+from employees
+where first_name = 'Hercules' and last_name like 'B%';
+
+--List all employees in the Sales department, 
+--including their employee number, last name, first name, 
+--and department name.
+
 
 
 
